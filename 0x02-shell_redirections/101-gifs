@@ -1,2 +1,2 @@
 #!/bin/bash
-exiftool -q -if '$framecount > 1' -p '$directory/$filename' -r -ext:gif
+find . -type f -name \*.gif -exec sh -c \ 'identify -format "%[fx:n>1]\n" "$0" | grep -q 1' {} \; -print
